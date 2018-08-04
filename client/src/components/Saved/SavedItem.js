@@ -1,8 +1,7 @@
 import React from "react";
-import "./Results.css";
 
-export const ResultItem = props => (
+export const SavedItem = props => (
   <li className='list-group-item'>
   	{props.children}
-  </li>
+  </li> 
 );

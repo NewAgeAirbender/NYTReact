@@ -1,10 +1,10 @@
 import axios from "axios";
-import Key from "./key";
+import apiKey from "./key";
 
 export default {
   //Gets all articles
   getArticles: function() {
-    return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json/" + Key + "");
+    return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json/" + apiKey + "");
   },
   getArticle: function(id){
       return axios.get("/api/articles/" + id);

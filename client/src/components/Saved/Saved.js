@@ -1,9 +1,8 @@
 import React from "react";
-import "./Results.css";
 
-export const Results = ({children}) => (
+export const Saved = ({children}) => (
   <div className="list-overflow-container">
-      <ul className="searched-items list-group">
+      <ul className="saved-items list-group">
         {children}
       </ul>
     </div>

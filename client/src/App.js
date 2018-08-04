@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Header from "./components/Header";
 import { Input, FormBtn } from "./components/Search";
+import { Results, ResultItem, SaveButton } from "./components/Results";
 import Container from "./components/Grid";
-import API from "./utils/API";
+import API from "./utils/API/API";
 
 class App extends Component {
 
@@ -49,21 +50,37 @@ class App extends Component {
   render() {
     return (
       <Container fluid>
-      <Header />
-      <form>
-        <Input
-          value={this.state.term}
-          onChange={this.handleInputChange}
-          name="term"
-          placeholder="Search Term (required)"
-        />
-        <FormBtn
-          disabled={!(this.state.term)}
-          onClick={this.handleFormSubmit}
-        >
-          Search
+        <Header />
+        <form>
+          <Input
+            value={this.state.term}
+            onChange={this.handleInputChange}
+            name="term"
+            placeholder="Search Term (required)"
+          />
+          <FormBtn
+            disabled={!(this.state.term)}
+            onClick={this.handleFormSubmit}
+          >
+            Search
         </FormBtn>
-      </form>
+        </form>
+        {this.state.articles.length ? (
+          <Results>
+            {this.state.articles.map(article => (
+              <ResultItem key={article._id}>
+                <a href={"/articles/" + article._id}>
+                  <strong>
+                    {article.title}
+                  </strong>
+                </a>
+                <SaveButton />
+              </ResultItem>
+            ))}
+          </Results>
+        ) : (
+            <h3>No Results to Display</h3>
+          )}
       </Container>
     );
   }
